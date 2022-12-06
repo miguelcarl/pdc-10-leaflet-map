@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    </head>
+    <body>
+        <div id="map" style="width: 800px; height: 600px;">
+        </div>
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
+    </body>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script>
+
+var map = L.map('map').setView([15.2709, 120.6381], 10);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 20
+}).addTo(map);
+
+
+//Asgabat, Turkmenistan
+L.marker([37.9372, 58.2355]).addTo(map);
+
+//Ahmedabad, India
+L.marker([23.0217, 72.5797]).addTo(map);
+
+//Kayin, Myanmar
+L.marker([17.377, 97.662]).addTo(map);
+
+//Hong Kong, China
+L.marker([22.2465, 114.2095]).addTo(map);
+
+//South, Korea
+L.marker([35.3022, 126.4300]).addTo(map);
+
+//Amur Oblast, Russia
+L.marker([53.859, 128.661]).addTo(map);
+
+//Mirninsky Ulus, Russia
+L.marker([62.7006, 112.3201]).addTo(map);
+
+//Amur Oblast, Russia
+L.marker([65.7797, 88.1667]).addTo(map);
+
+//Siberian, Russia
+L.marker([53.859, 128.661]).addTo(map);
+
+//Okrug, Russia
+L.marker([63.8389, 66.2338]).addTo(map);
+
+//Tatyshlinsky, Russia
+L.marker([56.3083, 56.1945]).addTo(map);
+
+//Russia
+var latlngs = [[17.377, 97.662],[22.2465, 114.2095],[35.3022, 126.4300],[53.859, 128.661],[62.7006, 112.3201],
+[65.7797, 88.1667]];
+var polygon = L.polygon(latlngs, {color: 'red'}).addTo(map);
+map.fitBounds(polygon.getBounds());
+
+var latlngs = [[65.7797, 88.1667],[63.8389, 66.2338],[56.3083, 56.1945],[37.9372, 58.2355],[23.0217, 72.5797],[17.377, 97.662]];
+var polygon = L.polygon(latlngs, {color: 'green'}).addTo(map);
+map.fitBounds(polygon.getBounds());
+
+//Name Initial
+var polyline_latlngs = [
+    [[56.837, 86.770],
+     [45.5802, 84.8833],
+     [56.837, 86.770],
+     [47.473, 92.510],
+     [56.3727, 97.5725],
+     [45.6020, 99.0848]
+    ]
+];
+polyline = L.polyline(polyline_latlngs, {color: 'yellow'}).addTo(map);
+
+//Small Circle
+L.circle([47.473, 92.510], {radius: 500}).addTo(map);
+
+    </script>
+</html>
